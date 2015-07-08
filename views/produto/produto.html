@@ -1,0 +1,82 @@
+<menu></menu>
+<div>
+    <div class="row btnproduto">
+        <div class="col-md-12">
+            <ui-Modal classe="btn btn-primary" ctrl="modalProdutoCtrl" size="lg" template="produto/modalProduto" nome="cadastro" ><i class="glyphicon glyphicon-plus"> </i> Cadastrar novo produto</ui-Modal>
+
+        </div>
+    </div>
+</div>
+<div class="col-sm-offset-10 ">
+    <p> Produtos <br>por página</p>
+
+    <select   ng-model="pageSize"
+    ng-options="p for p in perPagePresets">
+</select>
+</div>
+<div >
+    <div class="section tableproduto">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Nome</th>
+                                <th>Preço</th>
+                                <th>Quantidade</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr dir-paginate="prod in produtos | itemsPerPage: pageSize"
+                            current-page="currentPage" pagination-id="produtosPagination">
+                            <td >{{ (currentPage * pageSize) - pageSize+1+$index  }}</td>
+
+                            <td>{{prod.nome}}</td>
+                            <td>{{prod.preco}}</td>
+                            <td>{{prod.quantidade}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <dir-pagination-controls boundary-links="true"  template-url="views/dirPagination.tpl.html" pagination-id="produtosPagination"></dir-pagination-controls>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+<br> <br>
+<a href="" class="btn-lg col-sm-offset-1" ng-click="mostrarTabela = !mostrarTabela"><i class="glyphicon glyphicon-plus-sign " ng-show="!mostrarTabela"></i> <i class="glyphicon glyphicon-minus-sign" ng-show="mostrarTabela"></i>Mostrar dados de produtos vendidos</a>
+<div collapse="!mostrarTabela">
+    <div class="section tableproduto">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Nome</th>
+                                <th>Preço</th>
+                                <th>Quantidade</th>
+                                <th>Máquina</th>
+                                <th>Data</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr dir-paginate="prodc in produtosControle | itemsPerPage: pageSize"
+                            current-page="currentPage" pagination-id="produtosControlePagination">
+                            <td >{{ (currentPage * pageSize) - pageSize+1+$index  }}</td>
+
+                            <td>{{prodc.produto}}</td>
+                            <td>{{prodc.preco}}</td>
+                            <td>{{prodc.quantidade}}</td>
+                            <td>{{prodc.numeroMaquina}}</td>
+                            <td>{{prodc.created | date:'dd/MM/yyyy'}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <dir-pagination-controls boundary-links="true"  template-url="views/dirPagination.tpl.html" pagination-id="produtosControlePagination"></dir-pagination-controls>
+            </div>
+        </div>
+    </div>
+</div>
+</div>

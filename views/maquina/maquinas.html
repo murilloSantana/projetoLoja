@@ -1,0 +1,68 @@
+<menu></menu>
+
+
+
+<div class="col-sm-offset-10 seletorpagina">
+	<p> Máquinas <br>por página</p>
+
+	<select   ng-model="pageSize"
+	ng-options="p for p in perPagePresets">
+</select>
+</div>
+<div >
+	<div class="section tablemaquina">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<table class="table table-hover table-striped table-bordered table-condensed">
+						<thead>
+							<tr>
+								<th></th>
+								<th>Máquina</th>
+								<th>Data</th>
+								<th>Tempo</th>
+								<th>Inicio</th>
+								<th>Fim</th>
+								<th>Valor da Hora</th>
+
+							</tr>
+						</thead>
+						<tbody>
+							<tr dir-paginate="maq in maquinas |  filter:busca | itemsPerPage: pageSize"
+							current-page="currentPage" pagination-id="maquinasPagination">
+
+							<td >{{ (currentPage * pageSize) - pageSize+1+$index  }}</td>
+							
+							<td>{{maq.numeroMaquina}}</td>
+							<td>{{maq.inicio| date: 'dd/MM/yyyy'}}</td>
+							<td>{{maq.tempo}}</td>
+							<td>{{maq.inicio| date: 'HH:mm:ss'}}</td>
+							<td>{{maq.fim | date: 'HH:mm:ss'}}</td>
+							<td>R$ {{maq.valorHora}}</td>
+
+						</tr>
+					</tbody>
+				</table>
+				<dir-pagination-controls boundary-links="true"  template-url="views/dirPagination.tpl.html" pagination-id="maquinasPagination"></dir-pagination-controls>
+
+			</div>
+		</div>
+	</div>
+</div>
+</div>
+
+
+<div class="row  ">
+	<div class="col-sm-3">
+		<form role="form">
+			<div class="form-group">
+				<div class="input-group">
+					<input type="text" class="form-control" ng-model="selected" placeholder="O que está procurando?" typeahead="maq.created | date: 'dd/MM/yyyy' for maq in maquinas | filter:busca | limitTo:8" >
+					<span class="input-group-btn">
+						<a class="btn btn-primary" ><i class="glyphicon glyphicon-search"></i></a>
+					</span>
+				</div>
+			</div>
+		</form>
+	</div>
+</div>
