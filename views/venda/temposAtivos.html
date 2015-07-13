@@ -1,0 +1,46 @@
+<menu></menu>
+<div >
+  <div class="section seletorpagina">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <table class="table ">
+            <thead>
+              <tr>
+                <th>Máquina</th>
+                <th>Tempo</th>
+                <th>Inicio</th>
+                <th>Fim</th>
+                <th>Valor da Hora</th>
+                <th>Valor Produto</th>
+                <th>Valor Total</th>
+                <th>Tempo Restante</th>
+              </tr>
+            </thead>
+            <tbody >
+
+              <tr  ng-repeat="vend in vendas" ng-class="{fimtempo: piscar}"  >
+
+                <td >{{vend.maquina}}  </td>
+                <td>{{vend.vendaMaquinas.tempo}}</td>
+                <td>{{vend.vendaMaquinas[0].inicio| date: 'HH:mm'}}</td>
+                <td>{{vend.fim | date: 'HH:mm'}}</td>
+                <td>R$ {{vend.valorHora}}</td>
+                <td> R$ {{vend.valorProd}}</td>
+                <td > R$ {{vend.valorTotal}} <teste></teste></td>
+
+                <td ng-model="finalTempo" ng-show="!finalTempo" >{{vend.fim  - timer.getTime() -79200000 | date: 'HH:mm:ss'}}</td>
+
+                <td ng-show="finalTempo">{{mensagem}}</td>
+
+
+
+              </tr>
+
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

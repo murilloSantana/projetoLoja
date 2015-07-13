@@ -1,0 +1,67 @@
+
+
+<button type="button" class="btn btn-primary btn-sm" data-toggle="modal" ng-click="" data-target="#tempoOffline"   ><i class="glyphicon glyphicon-plus"></i>
+	Salvar tempo direto
+</button>
+
+
+<div class="modal fade" id="tempoOffline" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" >
+	<div class="modal-dialog" role="document">
+
+		<alerta-Salvar></alerta-Salvar>
+
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+
+				<h4 class="modal-title" >Controle de Tempo</h4>
+			</div>
+			<div class="modal-body">
+				
+
+				<div class="col-md-12  ">
+					<div class="col-md-4">				
+						<label >Quantidade Tempo</label>
+
+						<select class="form-control  " ng-model="maquina.tempo" ng-options="hora for hora in horas">
+							<option value="">tempo</option>
+						</select>
+					</div>
+
+					<div class="col-md-4">			
+						<label >Número Máquina</label>
+
+						<select class="form-control " ng-model="maquina.numero" ng-options="num for num in numeros">
+							<option value="">máquina</option>
+						</select>
+
+					</div>
+
+				</div>
+
+
+
+
+
+				<div class="col-sm-12">
+					<br>
+					<div class="col-md-5   ">			
+						<label >Data</label>
+
+						<input type="date" class="form-control" popover="Informe a data em que o tempo foi consumido" popover-trigger="mouseenter" ng-model="maquina.data">
+					</div>
+
+				</div>
+
+				
+			</div>
+			<div class="modal-footer uimodalfooter">
+				<button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+				<button type="button" class="btn btn-primary" ng-click="salvarOffline(maquina)">Salvar</button>
+				
+			</div>
+		</div>
+	</div>
+</div>
+
+

@@ -1,0 +1,49 @@
+
+
+<button type="button" class="btn btn-primary btn-sm" data-toggle="modal" ng-click="novoTempo();carregar()" data-target="#venda"   ><i class="glyphicon glyphicon-plus"></i>
+	Cadastro de Tempo
+</button>
+
+
+<div class="modal fade" id="venda" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" >
+	<div class="modal-dialog" role="document">
+
+		<alerta-Salvar></alerta-Salvar>
+
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+
+				<h4 class="modal-title" >Controle de Tempo</h4>
+			</div>
+			<div class="modal-body">
+				<div class="col-md-3" ng-show="primeiro">
+					<label >Número Máquina</label>
+
+					<select class="form-control " ng-model="maquina.numero" ng-options="num for num in numeros">
+						<option value="">máquina</option>
+					</select>
+
+				</div>
+
+				<div class="col-md-3  ">
+
+					<label >Quantidade Tempo</label>
+
+					<select class="form-control  " ng-model="maquina.tempo" ng-options="hora for hora in horas">
+						<option value="">tempo</option>
+					</select>
+
+				</div>
+			</div>
+			<div class="modal-footer uimodalfooter">
+				<button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+				<button type="button" class="btn btn-primary" ng-show="primeiro" ng-click="salvar(maquina)">Salvar</button>
+				<button type="button" class="btn btn-primary" ng-show="!primeiro" ng-click="maisTempo(maquina)">Salvar</button>
+
+			</div>
+		</div>
+	</div>
+</div>
+
+

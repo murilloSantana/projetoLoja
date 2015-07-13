@@ -1,0 +1,64 @@
+<div ng-show="mostrarTmpGuardado">
+	<div class="btntable" >
+
+		<button type="button" class="btn btn-danger  " ng-click="voltar()">Voltar</button>
+	</div>
+	<div class="section  tableprodutovenda" >
+
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<table class="table table-striped table-bordered table-hover table-condensed ">
+						<thead>
+
+							<tr>
+								<th>Nome</th>
+								<th>Tempo em minutos</th>
+								<th></th>
+								<th ></th>
+								<th ng-show="utilizarAtivado"></th>
+								<th ng-show="selectAtivado"></th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>
+									<input type="text" ng-model="tempoGuardado.nome">
+								</td>
+								<td>
+									<input type="number" ng-model="tempoGuardado.qtd">
+
+								</td>
+
+								<td>
+									<a href="" class="btn-lg"  popover="Registrar o tempo" popover-trigger="mouseenter" ng-click="registrarTempo(tempoGuardado)" ><i class="glyphicon glyphicon-plus-sign"></i></a>
+								</td>
+								<td></td>
+								<td ng-show="selectAtivado"></td>
+								<td ng-show="utilizarAtivado"> </td>
+							</tr>
+							<alerta-Salvar></alerta-Salvar>
+							<tr ng-repeat="tmp in temposGuardados">
+								<td>{{tmp.nome}}</td>
+								<td>{{tmp.qtd}}</td>
+								<td>	<a href="" class=" btn-lg"  popover="Remover o tempo" popover-trigger="mouseenter" ng-click="removeTempoGuardado(tmp)"><i class="glyphicon glyphicon-remove-sign text-danger "></i></a></td>
+								<td>	<a href="" class=" btn-lg"  popover="Utilizar o tempo" popover-trigger="mouseenter" ng-click="utilizarTempo(tmp)" ><i class="glyphicon glyphicon-remove-sign text-success "></i></a></td>
+
+								<td class="col-md-3" ng-show="utilizarAtivado"> 
+									<select class="form-control" ng-model="maquina.numero" ng-options="maquinasDisponiveis for maquinasDisponiveis in maquinasDisponiveis" ng-change="utilizarTempo(maquina)">
+										<option value="" >Selecione um máquina</option>
+									</select>
+								</td >
+								
+								<td ng-show="selectAtivado">
+									<a href="" class=" btn-lg"  popover="Ativar o tempo" popover-trigger="mouseenter" ng-click="ativarTempo(tmp,maquina)"><i class="glyphicon glyphicon-remove-sign text-danger "></i></a>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+
+	</div>
+</div>
