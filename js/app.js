@@ -1,1 +1,0 @@
-var app = angular.module("app",['ngRoute','ui.bootstrap','angularUtils.directives.dirPagination']);
